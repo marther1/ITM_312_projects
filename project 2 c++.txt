@@ -1,0 +1,122 @@
+#include <iostream>
+
+#include <cstdlib>
+
+#include <ctime>
+
+using namespace std;
+
+int main()
+
+{
+	srand(time(NULL)); // To not have the same numbers over and over again.
+
+	while (true) { // Main loop.
+
+		int number = rand() % 20; // use random number generator to generate a random number between 0-20
+
+		int guess; //input value 
+
+		int tries = 0;
+
+		char answer;
+
+		//introduce the game to the user
+
+		cout << "Try to guess the number between 0 to 20!\n";
+
+		cout << "You have 10 tries to guess it\n";
+
+		while (true) {
+
+			cout << "Guess a number between 0 and 20 (" << 10 - tries << " tries left): ";
+
+			//prompt the user for a guess
+
+			cin >> guess;
+
+			if (tries >= 9) {
+
+				break;
+			}
+
+			// Check number. Give hints to the user.
+
+			if (guess > number) {
+
+				cout << "Too high! Try again.\n";
+			}
+
+			else if (guess < number) {
+
+				cout << "Too low! Try again.\n";
+			}
+
+			else {
+
+				break;
+			}
+
+			// If it's not the number, increment tries.
+
+			tries++;
+		}
+
+		//Check for tries. Notify the user if they ran out of tries.
+
+		if (tries >= 9) {
+
+			cout << "You Lose Go Home!\n\n";
+
+		}
+
+		else {
+			//user won
+
+			cout << "\nCongratulations!!\n " << endl;
+
+			cout << "You guessed the right number in " << tries + 1 << " tries!\n";
+
+		}
+
+		while (true) { 
+
+			// Loop to ask user is he/she would like to play again.
+
+			cout << "\nWould you like to play again (Y/N)? ";
+
+			//get user's reponse.
+
+			cin >> answer;
+
+			// Check if proper response.
+
+			if (answer == 'n' || answer == 'N' || answer == 'y' || answer == 'Y') {
+
+				break;
+			}
+
+			else {
+
+				cout << "Please enter \'Y\' or \'N\'...\n";
+			}
+		}
+
+		// Check user's input and run again or exit;
+
+		if (answer == 'n' || answer == 'N') {
+
+			cout << "\nThank you for playing!\n" << endl;
+
+			break;
+		}
+
+		else {
+
+			cout << "\n\n\n";
+		}
+	}
+
+	return 0;
+
+}
